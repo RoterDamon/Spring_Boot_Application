@@ -48,17 +48,17 @@ public class UserController {
         return "redirect:/users/list";
     }
 
-    @GetMapping("/edit/{id}")
-    public ModelAndView editCustomerForm(@PathVariable("id") Long id) {
+    @GetMapping("/edit/{userId}")
+    public ModelAndView editCustomerForm(@PathVariable("userId") Long userId) {
         ModelAndView mav = new ModelAndView("edit_user");
-        User user = userService.getUser(id);
+        User user = userService.getUser(userId);
         mav.addObject("user", user);
         return mav;
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteCustomer(@PathVariable("id") Long id) {
-        userService.deleteUser(id);
+    @PostMapping("/delete/{userId}")
+    public String deleteCustomer(@PathVariable("userId") Long userId) {
+        userService.deleteUser(userId);
         return "redirect:/users/list";
     }
 }

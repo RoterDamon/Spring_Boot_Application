@@ -18,6 +18,7 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+    @Transactional(readOnly= true)
     @Override
     public List<User> getUsers() {
         return userRepository.findAll();
@@ -33,6 +34,7 @@ public class UserServiceImpl implements UserService {
         userRepository.saveAndFlush(user);
     }
 
+    @Transactional(readOnly= true)
     @Override
     public User getUser(Long id) {
         return userRepository.getOne(id);
